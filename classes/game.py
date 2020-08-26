@@ -12,8 +12,8 @@ class bcolors:
 
 class Person:
     def __init__(self, name, hp, mp, atk, df, magic, items):
-        self.maxhp = hp #maksymalne życie jakie moge mić aby się nie wyleczyć zadużo
-        self.hp = hp #aktualne życie
+        self.maxhp = hp
+        self.hp = hp
         self.maxmp = mp
         self.mp = mp
         self.atkl = atk - 10
@@ -21,7 +21,8 @@ class Person:
         self.df = df
         self.magic = magic
         self.items = items
-        self.actions = ["Attack","Magic", "Itmes"]
+        self.actions = ["Attack","Magic", "Items"]
+        self.character = ["Mage", "Warrior", "Assasin"]
         self.name = name
 
     def gen_damage(self):
@@ -38,6 +39,11 @@ class Person:
         if self.hp > self.maxhp:
             self.hp = self.maxhp
 
+    def restoreMP(self, dmg):
+        self.mp += dmg
+        if self.mp > self.maxmp:
+            self.mp = self.maxmp
+
     def get_hp(self):
         return self.hp
 
@@ -53,11 +59,18 @@ class Person:
     def reduce_mp(self, cost):
         self.mp -= cost
 
+
     def choose_action(self):
         i = 1
-
         print(bcolors.OKBLUE + bcolors.BOLD +self.name+ " actions" + bcolors.ENDC)
         for item in self.actions:
+            print("     "+str(i)+":", item)
+            i+=1
+
+    def choose_character(self):
+        i = 1
+        print("Choose your character: ")
+        for item in self.character:
             print("     "+str(i)+":", item)
             i+=1
 

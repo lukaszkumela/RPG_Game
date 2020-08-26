@@ -3,4 +3,4 @@
 
 **Work still in progress...**
 
-In next update I'll add: better AI, more items and spells, balance game a little, try to add a short story
+In next update I'll add: better AI, items for enemy, more items and spells, balance game a little, try to add a short story
