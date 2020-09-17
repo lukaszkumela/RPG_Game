@@ -1,7 +1,7 @@
 import random
-from classes.game import Person, bcolors
-from classes.magic import Spell
-from classes.inventory import Item
+from game import Person, bcolors
+from magic import Spell
+from inventory import Item
 
 newfile = open("stats.txt", "w+")
 # Offensive spells
@@ -39,6 +39,7 @@ assassin_items = [{"item": Bow, "quantity": 5}, {"item": Sword, "quantity": 5}, 
 
 running = True
 game = True
+BattleNumber = 1
 
 while game:
     b = 0
@@ -114,10 +115,11 @@ while game:
         for player in players:
             if defeated_players == ForIn:
                 print(bcolors.FAIL + "You lose!" + bcolors.ENDC)
-                string = "You lost! You died from: \n"
+                string = "Battle "+ str(BattleNumber) +": \n You lost! You died from: \n"
                 newfile.write(string)
+                BattleNumber+=1
                 for enemy in enemies:
-                    string2 = str(enemy.name)
+                    string2 = "  "+str(enemy.name)
                     newfile.write(string2)
                     newfile.write("\n")
                 newfile.write("\n")
@@ -126,10 +128,11 @@ while game:
                 break
             elif defeated_enemies == ForIn:
                 print(bcolors.OKGREEN + "You win!" + bcolors.ENDC)
-                string = "You win! You ended with this players: \n"
+                string = "Battle "+ str(BattleNumber) +": \n You win! You ended with this players: \n"
                 newfile.write(string)
+                BattleNumber += 1
                 for player in players:
-                    string2 = str(player.name)
+                    string2 ="  "+ str(player.name)
                     newfile.write(string2)
                     newfile.write("\n")
                 newfile.write("\n")
@@ -235,10 +238,11 @@ while game:
         for enemy in enemies:
             if defeated_players == ForIn:
                 print(bcolors.FAIL + "You lose!" + bcolors.ENDC)
-                string = "You lost! You died from: \n"
+                string ="Battle "+ str(BattleNumber) +": \n You lost! You died from: \n"
                 newfile.write(string)
+                BattleNumber += 1
                 for enemy in enemies:
-                    string2 = str(enemy.name)
+                    string2 ="  "+ str(enemy.name)
                     newfile.write(string2)
                     newfile.write("\n")
                 newfile.write("\n")
@@ -247,10 +251,11 @@ while game:
                 break
             elif defeated_enemies == ForIn:
                 print(bcolors.OKGREEN + "You win!" + bcolors.ENDC)
-                string = "You win! You ended with this players: \n"
+                string = "Battle "+ str(BattleNumber) + ": \nYou win! You ended with this players: \n"
                 newfile.write(string)
+                BattleNumber += 1
                 for player in players:
-                    string2 = str(player.name)
+                    string2 ="  "+ str(player.name)
                     newfile.write(string2)
                     newfile.write("\n")
                 newfile.write("\n")
